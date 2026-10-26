@@ -3,6 +3,7 @@ import { Router, type Request, type Response, type NextFunction } from 'express'
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'path';
 import jwt from 'jsonwebtoken';
+import Joi from 'joi';
 
 //Variables (on est dans src/routers/ → ../ pour remonter dans src/)
 const productsFile = path.join(import.meta.dirname, '../data/products.json');
@@ -39,6 +40,21 @@ usersRouter.get('/users', async (req: Request, res: Response) => {
 //Post 1 user
 usersRouter.post('/adduser', requireAuth, async (req: Request, res: Response) => { 
         try {
+            const schema = Joi.object({
+                name: Joi.string().alphanum().min(3).max(30).required(),
+                category: Joi.string().valid('phone', 'pc', 'tv').required(),
+                price: Joi.number().integer().min(0).required(),
+            });
+
+            const { error, value } = schema.validate({
+                name: req.body.name,
+                category: req.body.category,
+                price: req.body.price,
+            });
+            if (error) {
+                return res.status(400).json({ error: error.details[0].message });
+            }
+            
             const products = JSON.parse(await readFile(productsFile, 'utf-8'));
             products.push(req.body);
             await writeFile(productsFile, JSON.stringify(products, null, 2));

@@ -22,5 +22,17 @@
     "name": "Nokia",
     "category": "Phone",
     "price": 100
+  },
+  {
+    "id": 5,
+    "name": "Sony",
+    "category": "Phone",
+    "price": 50
+  },
+  {
+    "id": 6,
+    "name": "Sony",
+    "category": "azerty",
+    "price": 50
   }
 ]
