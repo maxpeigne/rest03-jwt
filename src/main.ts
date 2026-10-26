@@ -2,7 +2,7 @@
 import express, { type Express, type Request, type Response } from 'express';
 import path from 'path';
 import jwt from 'jsonwebtoken';
-import { usersRouter } from './routers/users.ts';   // ← on importe le router
+import { usersRouter } from './routers/products.ts';   // ← on importe le router
 
 const app: Express = express();
 

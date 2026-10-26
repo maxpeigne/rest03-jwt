@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "S26",
+    "category": "Phone",
+    "price": 600
+  },
+  {
+    "id": 2,
+    "name": "Oppo",
+    "category": "Phone",
+    "price": 400
+  },
+  {
+    "id": 3,
+    "name": "Iphone",
+    "category": "Phone",
+    "price": 1500
+  },
+  {
+    "id": 4,
+    "name": "Nokia",
+    "category": "Phone",
+    "price": 100
+  }
+]
